@@ -18,7 +18,15 @@ class WhenSearchingForTerms {
         wendy.attemptsTo(
                 Navigate.toTheHomePage(),
                 Search.byKeyword("Everest"),
-                Ensure.that(DisplayedArticle.firstHeading()).isEqualTo("Mount Everest")
-        );
+                Ensure.that(DisplayedArticle.firstHeading()).isEqualTo("Mount Everest"));
     }
+
+    @Test
+    void searchForVietnam() {
+        wendy.attemptsTo(
+                Navigate.toTheHomePage(),
+                Search.byKeyword("Vietnam"),
+                Ensure.that(DisplayedArticle.firstHeading()).isEqualTo("Vietnam"));
+    }
+
 }

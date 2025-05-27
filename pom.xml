@@ -10,10 +10,11 @@
     <name>Sample Serenity BDD project using JUnit 5 and Serenity Screenplay</name>
 
     <properties>
-        <serenity.version>4.1.12</serenity.version>
+        <serenity.version>4.2.26</serenity.version>
         <junit5.version>5.10.2</junit5.version>
-        <maven.surefire.version>3.1.2</maven.surefire.version>
-        <maven.failsafe.version>3.1.2</maven.failsafe.version>
+        <junit.platform.version>1.10.2</junit.platform.version>
+        <maven.surefire.version>3.2.5</maven.surefire.version>
+        <maven.failsafe.version>3.2.5</maven.failsafe.version>
         <maven.compiler.version>3.11.0</maven.compiler.version>
         <assertj.version>3.24.2</assertj.version>
         <logback.version>1.2.10</logback.version>
@@ -61,15 +62,27 @@
         </dependency>
         <!-- JUNIT 5 DEPENDENCY-->
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>${junit5.version}</version>
+    <groupId>org.junit.jupiter</groupId>
+    <artifactId>junit-jupiter-api</artifactId>
+    <version>${junit5.version}</version>
+    <scope>test</scope>
+</dependency>
+<dependency>
+    <groupId>org.junit.jupiter</groupId>
+    <artifactId>junit-jupiter-engine</artifactId>
+    <version>${junit5.version}</version>
+    <scope>test</scope>
+</dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-engine</artifactId>
+            <version>${junit.platform.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>${junit5.version}</version>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-launcher</artifactId>
+            <version>${junit.platform.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -78,6 +91,12 @@
             <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
+        <!-- Remove the thucydides-core dependency -->
+        <!-- <dependency>
+            <groupId>net.thucydides</groupId>
+            <artifactId>thucydides-core</artifactId>
+            <version>${serenity.version}</version>
+        </dependency> -->
     </dependencies>
     <build>
         <plugins>
@@ -121,8 +140,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven.compiler.version}</version>
                 <configuration>
-                    <source>16</source>
-                    <target>16</target>
+                    <source>17</source>
+                    <target>17</target>
                 </configuration>
             </plugin>
             <plugin>
